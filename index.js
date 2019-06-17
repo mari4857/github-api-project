@@ -5,6 +5,7 @@ function displayResults(responseJson) {
     // if there are previous results, remove them
     console.log(responseJson);
     $('#results-list').empty();
+    $('#js-error-message').empty();
     // iterate through the repos array, stopping at the max number of results
     for (let i = 0; i < responseJson.length; i++){
       // for each object in the repos array, add a list to
@@ -36,6 +37,7 @@ function getRepos(username) {
         .then(responseJson => displayResults(responseJson))
         .catch(err => {
             $('#js-error-message').text(`Something went wrong: ${err.message}`);
+            $('#results-list').empty();
         });
 }
 
